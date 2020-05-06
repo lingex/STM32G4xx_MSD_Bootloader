@@ -13,15 +13,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #ifndef _BTLDR_CONFIG_H_
 #define _BTLDR_CONFIG_H_
 
-#define DEV_CODE_ADDR           	FLASH_BASE
-#define DEV_FLASH_SIZE          	(128 * 1024)
-//#define DEV_ERASE_PAGE_SIZE     256		//STM32L100R8T6
-//#define DEV_ERASE_PAGE_SIZE     1024	//STM32F103C8T6
-#define DEV_ERASE_PAGE_SIZE     	2048	//STM32G431KBT6
+#define DEV_CODE_ADDR           FLASH_BASE
+#define DEV_FLASH_SIZE          (MCU_FLASH_SIZE * 1024U)
+#define DEV_ERASE_PAGE_SIZE     FLASH_PAGE_SIZE
 
-#define APP_ADDR                (DEV_CODE_ADDR + 0x5000)
-#define APP_SIZE                (DEV_FLASH_SIZE - 0x5000)
 
-#define CONFIG_READ_FLASH       1u
+#define APP_ADDR                (DEV_CODE_ADDR + APP_OFFSET)
+#define APP_SIZE                (DEV_FLASH_SIZE - APP_OFFSET)
+
+#define CONFIG_READ_FLASH       1U
+
+
+#define MCU_FLASH_SIZE					64U					//MCU flash size (kb)
+#define APP_OFFSET							0x5000			//bootloader size (byte), also the app will start
 
 #endif
