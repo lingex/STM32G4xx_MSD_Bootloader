@@ -27,6 +27,7 @@
 #include <stdint.h>					//lingex
 #include <stdbool.h>
 #include "btldr_config.h"
+#include "fat32.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -84,7 +85,10 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+	while(!fat32_init())
+	{
+		//flash addr error
+	}
   /* USER CODE END Init */
 
   /* Configure the system clock */

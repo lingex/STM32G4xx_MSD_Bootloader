@@ -111,7 +111,8 @@ typedef struct
 
 #define FAT32_DIR_ENTRY_ADDR         0x00400000
 
-static fat32_range_t fw_addr_range = {0x00400600, (0x00400600 + APP_SIZE)};
+//static fat32_range_t fw_addr_range = {0x00400600, (0x00400600 + APP_SIZE)};
+static fat32_range_t fw_addr_range = {0, 0};
 
 //-------------------------------------------------------
 
@@ -449,5 +450,18 @@ bool fat32_write(const uint8_t *b, uint32_t addr)
         volatile uint8_t halt = 1;
     }
     
+    return true;
+}
+
+bool fat32_init(void)
+{
+    if (DEV_FLASH_SIZE == 0)
+    {
+        return false;
+    }
+
+    fw_addr_range.begin = 0x00400600;
+    fw_addr_range.end = 0x00400600 + APP_SIZE;
+
     return true;
 }

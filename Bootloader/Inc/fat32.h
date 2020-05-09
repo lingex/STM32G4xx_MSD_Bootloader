@@ -18,5 +18,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 bool fat32_read(uint8_t *b, uint32_t addr);
 bool fat32_write(const uint8_t *b, uint32_t addr);
+bool fat32_init(void);
 
 #endif
