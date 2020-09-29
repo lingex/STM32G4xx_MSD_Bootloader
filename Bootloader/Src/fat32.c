@@ -13,7 +13,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <stdint.h>
 #include <string.h>
 
-#include "stm32g4xx_hal.h"
+#include "main.h"
 #include "btldr_config.h"
 #include "fat32.h"
 
@@ -40,7 +40,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 //-------------------------------------------------------
 
-typedef __packed struct 
+typedef struct __attribute__((packed))
 {
     uint8_t BS_jmpBoot[3];
     uint8_t BS_OEMName[8];
@@ -73,7 +73,7 @@ typedef __packed struct
     uint8_t BS_FilSysType[8];
 }fat32_bpb_t;
 
-typedef __packed struct 
+typedef struct __attribute__((packed))
 {
     uint32_t FSI_LeadSig;
     uint8_t FSI_Reserved1[480];
@@ -84,7 +84,7 @@ typedef __packed struct
     uint32_t FSI_TrailSig;
 }fat32_fsinfo_t;
 
-typedef __packed struct 
+typedef struct __attribute__((packed))
 {
     uint8_t DIR_Name[11];
     uint8_t DIR_Attr;
